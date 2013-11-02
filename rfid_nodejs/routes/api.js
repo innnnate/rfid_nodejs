@@ -9,3 +9,10 @@ exports.testForm = function(req, res){
 			   context: 'door',
 			   authString: 'l3tm3in123' });
 };
+
+exports.clientAPI = function(req, res){
+
+  res.json(req.body);
+
+};
+

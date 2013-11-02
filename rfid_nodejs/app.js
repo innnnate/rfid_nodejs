@@ -28,12 +28,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
+  app.locals.pretty=true;
 }
 
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/testform', api.testForm);
 app.get('/test', test.test);
+
+app.post('/clientAPI', api.clientAPI);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
