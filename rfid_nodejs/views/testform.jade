@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h3 Client Test Form
+  p
+    form(name="input", action="/clientAPI", method="post")
+      | ID:
+      input(type="text" name="id" value=id)
+      br
+      | Context:
+      input(type="text" name="context" value=context)
+      br
+      | AuthString:
+      input(type="text" name="authString" value=authString)
+      br
+      input(type="submit" value="Submit")
