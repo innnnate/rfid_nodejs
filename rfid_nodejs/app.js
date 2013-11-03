@@ -5,6 +5,7 @@
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
+var role = require('./routes/role');
 var http = require('http');
 var path = require('path');
 var api = require('./routes/api');
@@ -36,7 +37,6 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
-express.static.mime.define({'application/json': ["json"]});
 
 // development only
 if ('development' == app.get('env')) {
@@ -49,10 +49,11 @@ app.get('/users', user.list);
 app.get('/testform', api.testForm);
 app.get('/test', test.test);
 
+app.get('/api/users', user.list );
+app.get('/api/roles', role.list );
+
 app.post('/clientAPI', api.clientAPI);
-
-app.get("/api/users", user.list);
-
 http.createServer(app).listen(app.get('port'), function(){
+
   console.log('Express server listening on port ' + app.get('port'));
 });
