@@ -3,6 +3,8 @@
  * POST client API.
  */
 
+var DB = require("../lib/db");
+
 exports.testForm = function(req, res){
   res.render('testform', { title: 'Test Form',
 		 	   id: 'test id',
@@ -60,3 +62,8 @@ exports.clientAPI = function(req, res){
   res.json(response);
   
 };
+
+exports.dumpData = function(req ,res){
+	
+}
+
