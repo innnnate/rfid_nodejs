@@ -67,3 +67,7 @@ exports.dumpData = function(req ,res){
 	
 }
 
+
+exports.getUserData = function(req, res) {
+  DB.Users.find.pringjson();
+}
