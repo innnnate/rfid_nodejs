@@ -17,7 +17,7 @@ exports.list = function(req, res){
 	
     var response = {
 	  status: "OK",
-	  users: roleList
+	  roles: roleList
 	};
 	res.json( response );
 	return;
