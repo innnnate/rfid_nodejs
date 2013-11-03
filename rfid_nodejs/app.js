@@ -11,6 +11,19 @@ var path = require('path');
 var api = require('./routes/api');
 var test = require('./routes/test');
 
+function testDb()
+{
+	console.log("Testing Db...");
+	DB.User.find(function(err, user){
+		console.log("err", err);
+                console.log(JSON.stringify(user));
+	});
+}
+
+var DB = require("./lib/db");
+DB.connect(testDb);
+
+
 var app = express();
 
 // all environments
@@ -41,3 +54,4 @@ app.post('/clientAPI', api.clientAPI);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
