@@ -18,7 +18,6 @@ var roleModel = mongoose.model('Role', roleSchema);
 
 var contextSchema = mongoose.Schema({
 	name: String,
-	id: String,
 	authString: String
 }, {collection: "Contexts"});
 var contextModel = mongoose.model('Context', contextSchema);
