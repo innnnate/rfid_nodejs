@@ -1,0 +1,11 @@
+{
+	"status": "OK",
+	"roles": [
+		{
+			"name": "Admin"
+
+		},
+		{
+			"name": "Member"
+		}]
+}

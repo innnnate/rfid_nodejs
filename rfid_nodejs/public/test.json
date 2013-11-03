@@ -1,0 +1,14 @@
+{
+	"status": "OK",
+	"users": [
+		{
+			"name": "Admin McAdmin",
+			"id": "OMG",
+			"roles": ["admin"]
+		},
+		{
+			"name": "Test McTest",
+			"id": "what",
+			"roles": ["members", "drill_press"]
+		}]
+}
