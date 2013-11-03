@@ -11,7 +11,22 @@ var userSchema = mongoose.Schema({
 var userModel = mongoose.model('User', userSchema);
 
 
+var roleSchema = mongoose.Schema({
+	name: String,
+}, {collection: "Roles"});
+var roleModel = mongoose.model('Role', roleSchema);
+
+var contextSchema = mongoose.Schema({
+	name: String,
+	id: String,
+	authString: String
+}, {collection: "Contexts"});
+var contextModel = mongoose.model('Context', contextSchema);
+
+
 exports.User = userModel;
+exports.Role = roleModel;
+exports.Context = contextModel;
 
 exports.connect = function(callback)
 {
