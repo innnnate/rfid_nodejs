@@ -6,6 +6,7 @@
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
+var role = require('./routes/role');
 var http = require('http');
 var path = require('path');
 var api = require('./routes/api');
@@ -50,6 +51,7 @@ app.get('/testform', api.testForm);
 app.get('/test', test.test);
 
 app.get('/api/users', user.list );
+app.get('/api/roles', role.list );
 
 app.post('/clientAPI', api.clientAPI);
 http.createServer(app).listen(app.get('port'), function(){
