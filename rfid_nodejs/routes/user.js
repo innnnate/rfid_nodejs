@@ -17,7 +17,7 @@ exports.list = function(req, res){
 	
     var response = {
 	  status: "OK",
-	  users: JSON.stringify(userList)
+	  users: userList
 	};
 	res.json( response );
 	return;

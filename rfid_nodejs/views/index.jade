@@ -24,6 +24,7 @@ block content
       input.appendTo(container);
       input.kendoAutoComplete({
         dataSource: dsRoles,
+        dataTextField: "name",
         separator: ", "
         });
     }
@@ -32,7 +33,7 @@ block content
     var ds = new kendo.data.DataSource({
       transport: {
         read: {
-          url: "test.json",
+          url: "/api/users",
           dataType: "json"
           }
         },
