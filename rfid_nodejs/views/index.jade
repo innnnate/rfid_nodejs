@@ -10,7 +10,7 @@ block content
       var dsRoles = new kendo.data.DataSource({
       transport: {
         read: {
-          url: "testRoles.json",
+          url: "/api/roles",
           dataType: "json"
           }
         },
@@ -59,7 +59,7 @@ block content
         editor: createRoleEditor
       }, {
         title: "Actions",
-        command: ["edit", "destroy"]
+        command: [ {name:"save", text:"Save"}, "destroy"]
       }],
       editable: true,
       sortable: true
