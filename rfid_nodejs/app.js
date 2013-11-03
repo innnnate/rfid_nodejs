@@ -51,6 +51,8 @@ app.get('/test', test.test);
 
 app.post('/clientAPI', api.clientAPI);
 
+app.get("/api/users" users.list);
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
