@@ -47,7 +47,7 @@ exports.adduser = function(req, res){
  var create_id = jsontext.id;
  var create_roles = jsontext.roles.split( new RegExp(",[ ]*"));
  
- var newUser = new User(
+ var newUser = new DB.User(
    { name: create_name,
      id: create_id,
 	 roles: create_roles
