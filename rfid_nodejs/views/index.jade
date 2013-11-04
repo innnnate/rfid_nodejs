@@ -3,6 +3,28 @@ extends layout
 block content
   h1 Users
   div(id='userTable', width='100%' height='500px')
+  
+  p 
+    button(id="addButton", type="button" class="k-button") 
+      span(class="k-icon k-i-plus") 
+      | Add
+
+
+  div(id="addWindow")
+    h3 Fill out the form and click submit.
+    p
+      form(id="addUserForm")
+        | Name:
+        input(id="addName", type="text" name="id" class="k-input" required)
+        br
+        | Id:
+        input(id="addId", type="text" name="context" class="k-input" required)
+        br
+        | Roles:
+        input(id="addRoles", type="text" name="authString" class="k-input" required)
+        br
+        input(id="addUserButton" type="submit" value="Add User" class="k-button") 
+        div(id="isAddValid")
 
   script(type="text/javascript").
     function createRoleEditor(container, options)
@@ -60,8 +82,55 @@ block content
       }, {
         title: "Actions",
         command: [ {name:"save", text:"Save"}, "destroy"]
+      }, {
+        field: "_id",
+        hidden: true
       }],
       editable: true,
       sortable: true
       });
+
+      $("#addWindow").kendoWindow({
+        actions: ["close"],
+        title: "Add User",
+        visible: false,
+        width: "500px",
+        height: "300px"
+        });
+
+      $("#addButton").on('click', function() {
+        $("#addWindow").data("kendoWindow").open();
+        $("#addWindow").data("kendoWindow").center();
+        });
+
+      var addValidator = $("#addUserForm").kendoValidator().data("kendoValidator");
+      $("#addUserForm").submit(function() {
+        console.log("Got Here!");
+        var data = $("#addUserForm").serializeArray();
+        var jsonData = {};
+        jsonData["name"] = data[0].value;
+        jsonData["id"] = data[1].value;
+        jsonData["roles"] = data[2].value;
+
+        var dataString = JSON.stringify(jsonData);
+
+        function addSuccess(data, status, what)
+        {
+          ds.read();
+          $("#addWindow").data("kendoWindow").close();
+        }
+
+        $.ajax({
+          type: "POST",
+          url: "/api/users",
+          data: dataString,
+          success: addSuccess,
+          error: addSuccess,
+          dataType: "application/json",
+          contentType: "application/json"});
+
+        return false;
+        });
     });
+
+    
