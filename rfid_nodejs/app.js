@@ -54,7 +54,12 @@ app.get('/api/users', user.list );
 app.get('/api/roles', role.list );
 app.get('/api/contexts', context.list );
 
+app.post('/api/users', user.adduser );
+
+
 app.post('/clientAPI', api.clientAPI);
+
+
 http.createServer(app).listen(app.get('port'), function(){
 
   console.log('Express server listening on port ' + app.get('port'));

@@ -1,10 +1,8 @@
+var DB = require("../lib/db");
 
 /*
  * GET users listing.
  */
-
-var DB = require("../lib/db");
-
  
 exports.list = function(req, res){
 
@@ -33,4 +31,38 @@ exports.list = function(req, res){
 	res.json( response );
 	return;
   })
+};
+
+
+/*
+ * POST create users.
+ */
+
+exports.adduser = function(req, res){
+
+ var jsontext = req.body;
+ 
+ 
+ var create_name = jsontext.name;
+ var create_id = jsontext.id;
+ var create_roles = jsontext.roles.split( new RegExp(",[ ]*"));
+ 
+ var newUser = new User(
+   { name: create_name,
+     id: create_id,
+	 roles: create_roles
+   }
+ );
+ newUser.save(function (err) {
+   if(err) {
+     console.log("err", err)
+   }
+   else {
+     var response = {
+	   status: "OK"
+	 };
+	 res.json( response );
+	 return;
+   }
+ });
 };
