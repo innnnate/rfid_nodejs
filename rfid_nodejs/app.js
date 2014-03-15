@@ -49,12 +49,15 @@ app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/testform', api.testForm);
 app.get('/test', test.test);
+app.get('/testroleform', api.testRoleForm);
+
 
 app.get('/api/users', user.list );
 app.get('/api/roles', role.list );
 app.get('/api/contexts', context.list );
 
 app.post('/api/users', user.adduser );
+app.post('/api/roles', role.addrole );
 
 
 app.post('/clientAPI', api.clientAPI);

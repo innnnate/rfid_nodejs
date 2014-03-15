@@ -12,6 +12,12 @@ exports.testForm = function(req, res){
 			   authString: 'l3tm3in123' });
 };
 
+exports.testRoleForm = function(req, res){
+  res.render('testroleform', { title: 'Test Role Form',
+			   name: 'test_name' });
+};
+
+
 exports.clientAPI = function(req, res){
 
   var STATUS_BAD_DATA = 'ERRDATA';
@@ -62,6 +68,8 @@ exports.clientAPI = function(req, res){
   res.json(response);
   
 };
+
+
 
 exports.dumpData = function(req ,res){
 	

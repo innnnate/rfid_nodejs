@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h3 Role Test Form
+  p
+    form(id="testroleform", name="input", action="/getUserData", method="post")
+      | Name:
+      input(id="id", type="text" name="id" value=id)
+      br
+      
