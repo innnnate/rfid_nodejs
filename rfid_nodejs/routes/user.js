@@ -66,3 +66,27 @@ exports.adduser = function(req, res){
    }
  });
 };
+
+
+/*
+ * PUT update users.
+ */
+ 
+ exports.updateuser = function(req, res){
+   
+   var jsontext = req.body;   
+   
+   var create_name = jsontext.name;
+   var create_id = jsontext.id;
+   var create_roles = jsontext.roles.split( new RegExp(",[ ]*"));
+   
+   //find correct record in database
+   //make updates
+   //save it
+   
+ };
+ 
+/*
+ * DELETE delete users.
+ */
+ 

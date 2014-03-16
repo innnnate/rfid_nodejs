@@ -3,8 +3,38 @@ extends layout
 block content
   h3 Role Test Form
   p
-    form(id="testroleform", name="input", action="/getUserData", method="post")
+    form(id="testroleform", name="input", action="/clientAPI", method="post")
       | Name:
       input(id="id", type="text" name="id" value=id)
       br
+      
+  script(type="text/javascript").
+    function success(data,status, what)
+    {
+      document.clear();
+      document.write(data.responseText);
+    }
+    
+    $("#testroleform").submit(function()
+    {
+      var data = $("#testform").serializeArray();
+      var jsonData = {};
+      
+      //add parsing of JSON object here
+      
+      jsdonData["test_message" = "This is a test message."
+      
+      var dataString = JSON.stringify(jsonData);
+      
+      $.ajax({
+        type: "POST",
+        url: "/clientAPI",
+        data: dataString,
+        success: success,
+        error: success,
+        dataType: "application/json"
+        contentType: "application/json"});
+        
+      return false;
+    });
       
