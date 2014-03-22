@@ -47,9 +47,10 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-app.get('/testform', api.testForm);
+app.get('/roles', role.list);
+app.get('/testform', test.testForm);
 app.get('/test', test.test);
-app.get('/testroleform', api.testRoleForm);
+app.get('/testroleform', test.testRoleForm);
 
 
 app.get('/api/users', user.list );

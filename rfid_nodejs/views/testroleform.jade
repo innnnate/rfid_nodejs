@@ -1,40 +1,22 @@
 extends layout
 
 block content
-  h3 Role Test Form
-  p
-    form(id="testroleform", name="input", action="/clientAPI", method="post")
-      | Name:
-      input(id="id", type="text" name="id" value=id)
-      br
-      
-  script(type="text/javascript").
-    function success(data,status, what)
-    {
-      document.clear();
-      document.write(data.responseText);
-    }
+  h1= title
+  p Welcome to #{title}
+
+  // Wrapper
+  #wrapper
+  
+    // ROLE LIST
+    h2 Role List
+    #roleList
+      table
+        thead
+          th UserName
+          th Role
+          th Delete?
+        tbody
+    // /ROLE LIST
     
-    $("#testroleform").submit(function()
-    {
-      var data = $("#testform").serializeArray();
-      var jsonData = {};
-      
-      //add parsing of JSON object here
-      
-      jsdonData["test_message" = "This is a test message."
-      
-      var dataString = JSON.stringify(jsonData);
-      
-      $.ajax({
-        type: "POST",
-        url: "/clientAPI",
-        data: dataString,
-        success: success,
-        error: success,
-        dataType: "application/json"
-        contentType: "application/json"});
-        
-      return false;
-    });
-      
+  // /WRAPPER
+
