@@ -25,6 +25,21 @@ exports.list = function(req, res){
 };
 
 /*
+exports.populateTable() = function() {
+
+  var tableContent = '';
+  
+  $.getJSON('/roles', function( data ) {
+
+    $.each(data, function() 
+  
+  }
+
+}; //method populateTable
+*/
+
+
+/*
  * POST create roles.
  */
  

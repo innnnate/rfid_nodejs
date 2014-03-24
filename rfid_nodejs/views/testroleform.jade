@@ -7,16 +7,50 @@ block content
   // Wrapper
   #wrapper
   
+    //ROLE INFO
+    #roleInfo 
+        h2 Role Info
+        p
+          strong _id:
+            <span id='roleId'></span>
+          br
+          strong name:
+            <span id='roleName'></span>
+    // /ROLE INFO
+    
     // ROLE LIST
     h2 Role List
     #roleList
       table
         thead
           th UserName
-          th Role
+          th Email
           th Delete?
-        tbody
     // /ROLE LIST
     
+    // ADD ROLE
+    h2 Add Role
+    #addRole
+      fieldset
+        button#btnAddRole Add Role
+    // /ADD ROLE
+    
+    
   // /WRAPPER
+  
+  script(type="text/javascript").
+    $(function) {
+    var ds = new kendo.data.DataSource({
+      transport: {
+        read: {
+          url: "/api/roles",
+          dataType: "json"
+          }
+        },
+        schema: {
+         data: "roles"
+        }
+      });
+    }
+    
 
