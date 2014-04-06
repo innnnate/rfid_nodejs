@@ -53,6 +53,10 @@ block content
 
     $(function() {
     var ds = new kendo.data.DataSource({
+      id: "_id",
+      fields: {
+        _id: {editable: false, nullable: true}
+      },
       transport: {
         read: {
           url: "/api/users",
@@ -87,7 +91,20 @@ block content
         hidden: true
       }],
       editable: true,
-      sortable: true
+      sortable: true,
+      remove: function(e) {
+          $.ajax({
+            type: "DELETE",
+            url: "/api/users/" + e.model._id,
+            success: function() {
+              alert("User Deleted");
+            },
+            error: function() {
+              alert("Failed");
+            }
+
+            })
+      }
       });
 
       $("#addWindow").kendoWindow({
