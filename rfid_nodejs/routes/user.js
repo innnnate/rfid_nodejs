@@ -74,19 +74,39 @@ exports.adduser = function(req, res){
  
  exports.updateuser = function(req, res){
    
-   var jsontext = req.body;   
+//   var jsontext = req.body;   
    
-   var create_name = jsontext.name;
-   var create_id = jsontext.id;
-   var create_roles = jsontext.roles.split( new RegExp(",[ ]*"));
+//   var update_name = jsontext.name;
+//   var update_id = jsontext.id;
+//   var update_roles = jsontext.roles.split( new RegExp(",[ ]*"));
    
    //find correct record in database
+   
+   //if DB.User.findByID( jsontext.name )
    //make updates
-   //save it
+   //save it//
    
  };
  
 /*
  * DELETE delete users.
  */
+
+/* 
+ exports.deleteuser = function(req, res) {
+   userToDelete = req.params.id;
+   DB.User.removeById(userToDelete, function(err, result) {
+     res.send((result === 1) ? { msg: '' } : { msg:'error: ' + err });
+   }
+ }; //function deleteuser
+ */
  
+ exports.deleteuser = function() {
+  return function(req, res) {
+    var userToDelete = req.params.id;
+    DB.User.removeById(userToDelete, function(err, result) {
+      res.send((result === 1) ? { msg: '' } : { msg:'error: ' + err });
+    });
+  }
+};
+

@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  h3 Client Test Form
+  p
+    form(id="testform", name="input", action="/clientAPI", method="post")
+      | ID:
+      input(id="id", type="text" name="id" value=id)
+      br
+      | Context:
+      input(id="context", type="text" name="context" value=context)
+      br
+      | AuthString:
+      input(id="authString", type="text" name="authString" value=authString)
+      br
+      input(type="submit" value="Submit")
+
+  script(type="text/javascript").
+   function success(data, status, what)
+   {
+     document.clear();
+     document.write(data.responseText);
+   }
+   
+   $("#testform").submit(function()
+   {
+     var data = $("#testform").serializeArray();
+     var jsonData = {};
+     jsonData["id"] = data[0].value;
+     jsonData["context"] = data[1].value;
+     jsonData["authString"] = data[2].value;
+
+     var dataString = JSON.stringify(jsonData);
+
+     $.ajax({
+       type: "POST",
+       url: "/clientAPI",
+       data: dataString,
+       success: success,
+       error: success,
+       dataType: "application/json",
+       contentType: "application/json"});
+
+     return false;
+   });

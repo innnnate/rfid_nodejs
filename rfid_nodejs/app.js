@@ -51,6 +51,8 @@ app.get('/roles', role.list);
 app.get('/testform', test.testForm);
 app.get('/test', test.test);
 app.get('/testroleform', test.testRoleForm);
+app.get('/testdeleteform', test.testDeleteForm);
+
 
 
 app.get('/api/users', user.list );
@@ -60,6 +62,7 @@ app.get('/api/contexts', context.list );
 app.post('/api/users', user.adduser );
 app.post('/api/roles', role.addrole );
 
+app.delete('/api/users/:id', user.deleteuser );
 
 app.post('/clientAPI', api.clientAPI);
 

@@ -14,6 +14,11 @@ exports.testRoleForm = function(req, res){
 			   name: 'test_name' });
 };
 
+exports.testDeleteForm = function(req, res){
+  res.render('testdeleteform', { title: 'Test Delete Form',
+			   name: 'test_delete_form' });
+};
+
 exports.testForm = function(req, res){
   res.render('testform', { title: 'Test Form',
 		 	   id: 'test id',
