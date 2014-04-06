@@ -92,21 +92,14 @@ exports.adduser = function(req, res){
  * DELETE delete users.
  */
 
-/* 
+ 
  exports.deleteuser = function(req, res) {
    userToDelete = req.params.id;
-   DB.User.removeById(userToDelete, function(err, result) {
+   DB.User.remove( {_id: userToDelete} , function(err, result) {
      res.send((result === 1) ? { msg: '' } : { msg:'error: ' + err });
    }
+   );
+   console.log("Removed: ", userToDelete);
  }; //function deleteuser
- */
- 
- exports.deleteuser = function() {
-  return function(req, res) {
-    var userToDelete = req.params.id;
-    DB.User.removeById(userToDelete, function(err, result) {
-      res.send((result === 1) ? { msg: '' } : { msg:'error: ' + err });
-    });
-  }
-};
+
 
