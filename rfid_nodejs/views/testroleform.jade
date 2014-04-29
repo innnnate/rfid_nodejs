@@ -1,56 +1,41 @@
+doctype html 
+html(lang="en")
+
 extends layout
 
 block content
   h1= title
   p Welcome to #{title}
 
-  // Wrapper
-  #wrapper
-  
-    //ROLE INFO
-    #roleInfo 
-        h2 Role Info
-        p
-          strong _id:
-            <span id='roleId'></span>
-          br
-          strong name:
-            <span id='roleName'></span>
-    // /ROLE INFO
-    
-    // ROLE LIST
     h2 Role List
     #roleList
       table
         thead
-          th UserName
-          th Email
-          th Delete?
+          th _id
+          th name
     // /ROLE LIST
     
-    // ADD ROLE
-    h2 Add Role
-    #addRole
-      fieldset
-        button#btnAddRole Add Role
-    // /ADD ROLE
+    button(class="button", id="populate").
+      Load Data
     
-    
-  // /WRAPPER
   
   script(type="text/javascript").
-    $(function) {
-    var ds = new kendo.data.DataSource({
-      transport: {
-        read: {
-          url: "/api/roles",
-          dataType: "json"
-          }
-        },
-        schema: {
-         data: "roles"
-        }
-      });
-    }
-    
-
+            $.getJSON('/roles', function(data) {
+              var mystatus = data.status;
+              var myroles = data.roles;
+              console.log("JSON status is:");
+              console.log(data.status);
+              console.log("JSON roles are:");
+              console.log(data.roles);
+              
+              var tablecontents = "";
+              tablecontents = '<table>';              
+              $.each(myroles, function( key, val) {
+              
+                  tablecontents += '<tr>';
+                  tablecontents += '<td>'+ val._id + '</td>';
+                  tablecontents += '<td>'+ val.name + '</td>';
+                  tablecontents +='</tr>';
+              });
+              document.getElementById("roleList").innerHTML = tablecontents;
+              });
